@@ -1,0 +1,18 @@
+extends layout
+block content
+	.container
+		h3 Update Form
+		form(action="/validateupdate",method='post')
+			.form-group
+			h5
+				blockquote.blockquote Username
+			input#fullname.form-control(type='text', placeholder='Enter username',name='username')
+			.form-group
+			h5
+				blockquote.blockquote Field to update
+			input#fullname.form-control(type='text', placeholder='Enter field',name='field')
+			.form-group
+			h5
+				blockquote.blockquote New Value
+			input#fullname.form-control(type='text', placeholder='Enter new value',name='value')
+			button.btn.btn-primary(type='submit') Submit

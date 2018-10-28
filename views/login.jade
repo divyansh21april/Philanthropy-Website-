@@ -1,0 +1,64 @@
+extends layout
+block content
+    .limiter
+        .container-login100
+            .wrap-login100
+                form.login100-form.validate-form.p-l-55.p-r-55.p-t-178(action='/checkuser',method='POST')
+                    span.login100-form-title
+                        | Log In
+                    .wrap-input100.validate-input.m-b-16(data-validate='Please enter username')
+                        input.input100(type='text', name='username', placeholder='Username')
+                        span.focus-input100
+                    .wrap-input100.validate-input(data-validate='Please enter password')
+                        input.input100(type='password', name='pass', placeholder='Password')
+                        span.focus-input100
+                    .p-t-13.p-b-23.centerforgot
+                        span.txt1
+                            | Forgot&nbsp
+                        a.txt2(href='#')
+                            | Username / Password?
+                    .container-login100-form-btn
+                        button.login100-form-btn(type='submit')
+                            | Log in
+                    .flex-col-c.p-t-100.p-b-40
+                        span.txt1.p-b-9
+                            | Don’t have an account?
+                        a.txt3(href='/request')
+                            | Sign up now
+    // ===============================================================================================
+    link(rel='icon', type='image/png', href='../images/icons/favicon.ico')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../vendor/bootstrap/css/bootstrap.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../vendor/animate/animate.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../vendor/css-hamburgers/hamburgers.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../vendor/animsition/css/animsition.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../vendor/select2/select2.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../vendor/daterangepicker/daterangepicker.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='../Styles/util.css')
+    link(rel='stylesheet', type='text/css', href='../Styles/main.css')
+    // ===============================================================================================
+    
+    // ===============================================================================================
+    script(src='../vendor/jquery/jquery-3.2.1.min.js')
+    // ===============================================================================================
+    script(src='../vendor/animsition/js/animsition.min.js')
+    // ===============================================================================================
+    script(src='../vendor/bootstrap/js/popper.js')
+    script(src='../vendor/bootstrap/js/bootstrap.min.js')
+    // ===============================================================================================
+    script(src='../vendor/select2/select2.min.js')
+    // ===============================================================================================
+    script(src='../vendor/daterangepicker/moment.min.js')
+    script(src='../vendor/daterangepicker/daterangepicker.js')
+    // ===============================================================================================
+    script(src='../vendor/countdowntime/countdowntime.js')
+    // ===============================================================================================
+    script(src='../Scripts/main.js')

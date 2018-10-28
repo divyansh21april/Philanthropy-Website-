@@ -1,0 +1,43 @@
+extends layout
+block content
+  .container
+    h1(style='text-align: center; color: #0071BC;') Join Philanthropy Club Today!
+    br
+    form(action='/addmember' method='post')
+      .form-group
+        h5
+          blockquote.blockquote First Name
+        input#fullname.form-control(type='text', placeholder='Enter your first name',name='first')
+      .form-group
+        h5
+          blockquote.blockquote Last Name
+        input#fullname.form-control(type='text', placeholder='Enter your last name',name='last')
+      .form-group
+        h5
+          blockquote.blockquote Phone
+        input#fullname.form-control(type='text', placeholder='Enter your phone number',name='phone',maxlength="10",minlength="10", pattern="\d{3}[\-]\d{3}[\-]\d{4}")
+      .form-group
+        .form-group
+          h5
+            blockquote.blockquote Grade Level
+          input#grade.form-control(type='number', aria-describedby='gradeLevel', placeholder='Enter your grade level', min='9', max='12',name='grade')
+          small#gradeLevel.form-text.text-muted Enter a value between 9 and 12
+        .form-group
+          h5
+            blockquote.blockquote GPA
+          input#gpa.form-control(type='number', aria-describedby='gpaWarn', placeholder='Enter your overall GPA',name='gpa',max="5")
+          small#gpaWarn.form-text.text-muted We will check to make sure this value is correct
+        .form-group
+          h5
+            blockquote.blockquote Email Address
+          input#email.form-control(type='email', placeholder='Enter your school email address',name='email',pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/")
+        .form-group
+          h5
+            blockquote.blockquote Username
+          input#username.form-control(type='text', aria-describedby='usernameWarn', placeholder='Enter your desired username',name='username')
+          small#usernameWarn.form-text.text-muted Please keep this school appropriate
+        .form-group
+          h5
+            blockquote.blockquote Password
+          input#password.form-control(type='password', placeholder='Enter your desired password',name='password')
+        button.btn.btn-primary(type='submit') Submit

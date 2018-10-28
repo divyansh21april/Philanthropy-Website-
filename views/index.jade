@@ -1,0 +1,85 @@
+extends layout
+block content
+	link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+	script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js')
+	script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+	link(rel='shortcut icon', href='../favicon.ico')
+	link(rel='stylesheet', type='text/css', href='../Styles/component1.css')
+	link(rel='stylesheet', type='text/css', href='../Styles/demo.css')
+	link(rel='stylesheet', type='text/css', href='../Styles/normalize.css')
+	link(rel='stylesheet', href='../Styles/general.css')
+	link(rel='stylesheet', href='../Styles/calendar.css')
+	link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+	link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+	link(href='https://fonts.googleapis.com/css?family=Montserrat:700,400', rel='stylesheet', type='text/css')
+	link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+	script(src='../Scripts/modernizr-2.6.2.min.js')
+	link(href='../fullcalendar.min.css', rel='stylesheet')
+	link(href='../fullcalendar.print.min.css', rel='stylesheet', media='print')
+	script(src='../lib/moment.min.js')
+	script(src='../lib/jquery.min.js')
+	script(src='../fullcalendar.min.js')
+	.container
+		.row
+			.col-md-4
+				.logowrap1
+					img(src='../Images/logo.png', style='width: 100%;')
+			.col-md-8(style='margin-top: 60px;')
+				blockquote.blockquote
+					p.mb-0(style='text-align: center')
+						b
+							"What we have done for ourselves alone dies with us; what we have done for others and the world remains and is immortal."
+					footer.blockquote-footer(style='text-align: center') Albert Pike
+	br
+	.container(style='')
+		.jumbotron.background1
+			.calendarcont
+				h3(style='text-align: center;') Calendar of Events
+				script.
+					$(document).ready(function() {
+					$('#calendar').fullCalendar({
+					defaultDate: '2018-06-01',
+					editable: true,
+					eventLimit: true, // allow "more" link when too many events
+					each obj in event
+						events+={
+							title: #{obj.eventname}
+							start: #{obj.start}
+							end:#{obj.end}
+						}
+					});
+					});
+				style.
+					body {
+					margin: 40px 10px;
+					padding: 0;
+					font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+					font-size: 14px;
+					}
+					#calendar {
+					max-width: 900px;
+					margin: 0 auto;
+					}
+				#calendar
+	.container
+		hr(style='color: grey; background-color: grey; height: 2px;')
+	.container
+		.row
+			.col-md-12(style='margin-bottom: 30px;')
+				h3 Member Leaderboard
+		.row
+			.col-md-12
+				table.table.table-hover.table-responsive.table-stripped
+					thead.bg-primary
+						th(scope='col') First
+						th(scope='col') Last
+						th(scope='col') Hours
+					tbody
+						each obj in members
+							tr
+								td	#{obj.first}
+								td 	#{obj.last}
+								td	#{obj.hour}
+	.container
+		hr(style='color: grey; background-color: grey; height: 2px;')

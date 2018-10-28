@@ -1,0 +1,21 @@
+extends layout
+block content
+	.container
+			.row
+				.col-md-12(style='margin-bottom: 30px;')
+					h3 Members sheet
+			.row
+				.col-md-12
+					table.table.table-hover.table-responsive.table-stripped
+						thead.bg-primary
+							th(scope='col') First
+							th(scope='col') Last
+							th(scope='col') Hours
+						tbody#member
+			script(type='text/javascript').
+			var text='';
+			for each(obj in members)
+			{
+			text+='<tr>'+'<td>'+obj.firstname+'</td>'+'<td>'+obj.lastname+'</td>'+'<td>'+obj.hours+'</td>'+'<td>'+obj.uniqueid+'</td>'+'</tr>';
+			}
+			document.getElementById('member').innerHTML=text;

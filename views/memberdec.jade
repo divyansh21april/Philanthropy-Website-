@@ -1,0 +1,32 @@
+extends layout
+block content
+	.row
+		.col-md-12
+			table.table.table-responsive
+				thead.bg-primary
+					th(scope='col', style='text-align: center;') First Name
+					th(scope='col', style='text-align: center;') Last Name
+					th(scope='col', style='text-align: center;') Grade Level
+					th(scope='col', style='text-align: center;') GPA
+					th(scope='col', style='text-align: center;') Email Address
+					th(scope='col', style='text-align: center;') Username
+					th(scope='col', style='text-align: center;') Password
+					th(scope='col', style='text-align: center;') Accept
+					th(scope='col', style='text-align: center;') Decline
+				form
+					tbody
+						each obj in mem
+							tr
+								td(style='text-align: center; padding: 15px 0;') #{obj.first}
+								td(style='text-align: center; padding: 15px 0;') #{obj.last}
+								td(style='text-align: center; padding: 15px 0;') #{obj.grade}
+								td(style='text-align: center; padding: 15px 0;') #{obj.gpa}
+								td(style='text-align: center; padding: 15px 0;') #{obj.email}
+								td(style='text-align: center; padding: 15px 0;') #{obj.username}
+								td(style='text-align: center; padding: 15px 0;') #{obj.password}
+								td(style='text-align: center;')
+									form(action='/accept?#{obj.username}')
+										button.btn(type='submit', style='background-color: #87C5E8; color: #FFF;') Accept
+								td(style='text-align: center;')
+									form(action='/decline?#{obj.username}')
+										button.btn(type='reset', style='background-color: grey; color: #FFF;') Decline

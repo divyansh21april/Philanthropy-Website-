@@ -1,0 +1,286 @@
+extends layout
+
+block content
+    script.
+        $(function() {
+        function slideMenu() {
+        var activeState = $("#menu-container .menu-list").hasClass("active");
+        $("#menu-container .menu-list").animate(
+        {
+        left: activeState ? "0%" : "-100%"
+        },
+        400
+        );
+        }
+        $("#menu-wrapper").click(function(event) {
+        event.stopPropagation();
+        $("#hamburger-menu").toggleClass("open");
+        $("#menu-container .menu-list").toggleClass("active");
+        slideMenu();
+        $("body").toggleClass("overflow-hidden");
+        });
+        $(".menu-list").find(".accordion-toggle").click(function() {
+        $(this).next().toggleClass("open").slideToggle("fast");
+        $(this).toggleClass("active-tab").find(".menu-link").toggleClass("active");
+        $(".menu-list .accordion-content")
+        .not($(this).next())
+        .slideUp("fast")
+        .removeClass("open");
+        $(".menu-list .accordion-toggle")
+        .not(jQuery(this))
+        .removeClass("active-tab")
+        .find(".menu-link")
+        .removeClass("active");
+        });
+        }); // jQuery load
+
+    style.
+        ul { list-style: none; }
+        a { text-decoration: none; color: black;}
+        #menu-wrapper {
+        overflow: hidden;
+        max-width: 100%;
+        cursor: pointer;
+        }
+        #menu-wrapper #hamburger-menu {
+        position: relative;
+        width: 25px;
+        height: 20px;
+        margin: 15px;
+        }
+        #menu-wrapper #hamburger-menu span {
+        opacity: 1;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 2px;
+        border-radius: 10px;
+        color: black;
+        background-color: blue;
+        position: absolute;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .4s ease-in-out;
+        transition: .4s ease-in-out;
+        }
+        #menu-wrapper #hamburger-menu span:nth-child(1) {
+        top: 0;
+        }
+        #menu-wrapper #hamburger-menu span:nth-child(2) {
+        top: 9px;
+        }
+        #menu-wrapper #hamburger-menu span:nth-child(3) {
+        top: 18px;
+        }
+        #menu-wrapper #hamburger-menu.open span:nth-child(1) {
+        top: 9px;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+        }
+        #menu-wrapper #hamburger-menu.open span:nth-child(2) {
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        left: -60px;
+        }
+        #menu-wrapper #hamburger-menu.open span:nth-child(3) {
+        top: 9px;
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+        }
+        #menu-container .menu-list .menu-submenu {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        }
+        #menu-container .menu-list {
+        padding-left: 0;
+        display: block;
+        position: absolute;
+        width: 100%;
+        max-width: 450px;
+        background: blue;
+        box-shadow: rgba(100,100,100,0.2) 6px 2px 10px;
+        z-index: 999;
+        overflow-y: auto;
+        overflow-x: hidden;
+        left: -100%;
+        }
+        #menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
+        font-size: 16px;
+        padding: 20px;
+        text-transform: uppercase;
+        border-top: 1px solid #dbdcd2;
+        }
+        #menu-container .menu-list li:first-of-type {
+        border-top: 0;
+        }
+        .accordion-toggle, .accordion-content {
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+        letter-spacing: 1px;
+        }
+        .accordion-content {
+        display: none;
+        }
+        .accordion-toggle a:before, .accordion-toggle a:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        width: 15px;
+        height: 2px;
+        margin-top: -1px;
+        background-color: #5a5858;
+        -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s ease-out;
+        }
+        .accordion-toggle a:before {
+        -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        opacity: 1;
+        z-index: 2;
+        }
+        .accordion-toggle.active-tab {
+        background: yellowgreen;
+        transition: all 0.3s ease;
+        }
+        .accordion-toggle a.active:before {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        background: #fff !important;
+        }
+        .accordion-toggle a.active:after {
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+        background: #fff !important;
+        opacity: 0;
+        }
+    .container-fluid
+        .row
+            .col-md-12.profileheader(style='margin-top: 15px;')
+                h2 Welcome (user)!
+    div#adm
+    if(status=='admin')
+        #menu-container
+            #menu-wrapper
+                #hamburger-menu
+                    span
+                    span
+                    span
+                // hamburger-menu
+            // menu-wrapper
+            ul.menu-list.accordion
+                li#nav1.toggle.accordion-toggle
+                    span.icon-plus
+                    a.menu-link(href='/update') Update members
+                // menu-submenu accordon-content
+                li#nav2.toggle.accordion-toggle
+                    span.icon-plus
+                    a.menu-link(href='/register') Registration Requests
+                // menu-submenu accordon-content
+                li#nav3.toggle.accordion-toggle
+                    span.icon-plus
+                    a.menu-link(href='/calender') Calender
+                // menu-submenu accordon-content
+                li#nav3.toggle.accordion-toggle
+                    span.icon-plus
+                    a.menu-link(href='/evententry') Event Entry
+                // menu-submenu accordon-content
+            // menu-list accordion
+        // menu-container
+        .container
+                .row
+                    .col-md-12(style='margin-bottom: 30px;')
+                        h3 Members
+                .row
+                    .col-md-12
+                        table.table.table-hover.table-responsive.table-stripped
+                            thead.bg-primary
+                                th(scope='col') First
+                                th(scope='col') Last
+                                th(scope='col') Username
+                                th(scope='col') Hours
+                            tbody
+                                each obj in members
+                                    tr
+                                        td  #{obj.first}
+                                        td  #{obj.last}
+                                        td  #{obj.username}
+                                        td  #{obj.hour}
+        .container
+            hr(style='color: grey; background-color: grey; height: 2px;')
+        .container
+                .row
+                    .col-md-12(style='margin-bottom: 30px;')
+                        h3 Orders
+                .row
+                    .col-md-12
+                        table.table.table-hover.table-responsive.table-stripped
+                            thead.bg-primary
+                                th(scope='col') First
+                                th(scope='col') Last
+                                th(scope='col') Username
+                                th(scope='col') Item
+                                th(scope='col') Quantity
+                            tbody
+                                each obj in order
+                                    tr
+                                        td  #{obj.first}
+                                        td  #{obj.last}
+                                        td  #{obj.username}
+                                        td  #{obj.item}
+                                        td  #{obj.quantity}
+        .container
+            hr(style='color: grey; background-color: grey; height: 2px;')
+    else
+        .container
+                .row
+                    .col-md-12(style='margin-bottom: 30px;')
+                        h3 Event History
+                .row
+                    .col-md-12
+                        table.table.table-hover.table-responsive.table-stripped
+                            thead.bg-primary
+                                th(scope='col') Hours
+                                th(scope='col') Event Name
+                                th(scope='col') Date
+                            tbody
+                                each obj in event
+                                    tr
+                                        td  #{obj.hours}
+                                        td  #{obj.eventname}
+                                        td  #{obj.date}
+        .container
+            hr(style='color: grey; background-color: grey; height: 2px;')
+        .container
+                .row
+                    .col-md-12(style='margin-bottom: 30px;')
+                        h3 Orders
+                .row
+                    .col-md-12
+                        table.table.table-hover.table-responsive.table-stripped
+                            thead.bg-primary
+                                th(scope='col') Date
+                                th(scope='col') Item
+                                th(scope='col') Quantity
+                            tbody
+                                each obj in order
+                                    tr
+                                        td  #{obj.date}
+                                        td  #{obj.item}
+                                        td  #{obj.quantity}
+        .container
+            hr(style='color: grey; background-color: grey; height: 2px;')
+    .container
+        form(action='/signout')
+            button.btn.btn-primary(type='submit') Sign out!
+        hr(style='color: grey; background-color: grey; height: 2px;')
+        

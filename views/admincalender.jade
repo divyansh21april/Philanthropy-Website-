@@ -1,0 +1,51 @@
+extends layout
+block content
+	link(href='../fullcalendar.min.css', rel='stylesheet')
+	link(href='../fullcalendar.print.min.css', rel='stylesheet', media='print')
+	script(src='../lib/moment.min.js')
+	script(src='../lib/jquery.min.js')
+	script(src='../fullcalendar.min.js')
+	script.
+		$(document).ready(function() {
+		$('#calendar').fullCalendar({
+		defaultDate: '2018-03-12',
+		editable: true,
+		eventLimit: true, // allow "more" link when too many events
+		each obj in event
+			events+={
+				title: #{obj.eventname}
+				start: #{obj.start}
+				end:#{obj.end}}
+		});
+		});
+	style.
+		body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+		}
+		#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+		}
+	#calendar
+	.container
+		h1(style='text-align: center; color: #0071BC;') Administrative Calendar Editor
+		br
+		form(action='/setevent')
+			.form-group
+				.form-group
+					h5
+						blockquote.blockquote Event Name
+					input#event.form-control(type='text', aria-describedby='eventWarn', placeholder='Enter the name of the event you attended',name='eventname')
+				.form-group
+					h5
+						blockquote.blockquote Start Date
+					input#date.form-control(type='date', aria-describedby='dateWarn', placeholder='Enter the date of the event',name='startdate')
+				.form-group
+					h5
+						blockquote.blockquote End Date
+					input#date.form-control(type='date', aria-describedby='dateWarn', placeholder='Enter the date of the event',name='enddate')
+				button.btn.btn-primary(type='submit') Submit
+

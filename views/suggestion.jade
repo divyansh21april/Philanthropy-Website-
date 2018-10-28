@@ -1,0 +1,43 @@
+extends layout
+
+block content
+	.container
+		.row
+			.col-md-6(style='margin-top: 50px;')
+				.sughead
+					h1.mb-0(style='text-align: center; color: #0071BC;')
+						b Give us your feedback!
+						h1.mb-0(style='text-align: center; color: #0071BC;')
+							b Help us improve!
+			.col-md-6
+				.logowrap3
+					img.logowrap1(src='../Images/logo.png')
+		br
+		.row
+			form(action='addsuggestion',method='post')
+				.form-group
+					h5
+						blockquote.blockquote First Name
+					input#fname.form-control(type='text')
+				.form-group
+					h5
+						blockquote.blockquote  Last Name
+					input#lname.form-control(type='text')
+				.form-group
+					h5
+						blockquote.blockquote  Grade Level
+					input#gradelevel.form-control(type='number', min='9', max='12')
+				.form-group
+					h5
+						blockquote.blockquote  What have you liked about Philanthropy Club so far?
+					textarea.form-control(rows='4', cols='100')  
+				.form-group
+					h5
+						blockquote.blockquote  How can we improve the club going forward?
+					textarea.form-control(rows='4', cols='100')  
+				.form-group
+					h5
+						blockquote.blockquote  Other Comments / Suggestions
+					textarea.form-control(rows='4', cols='100')
+				button.btn.btn-primary(type='submit') Submit
+			br

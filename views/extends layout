@@ -1,0 +1,24 @@
+extends layout
+block content
+	.container
+		h1(style='text-align: center; color: #0071BC;') Community Service Hour Submission Form
+		br
+		form
+			.form-group
+				.form-group
+					h5
+						blockquote.blockquote Username
+					input#username.form-control(type='text', aria-describedby='usernameWarn', placeholder='Enter your username')
+				.form-group
+					h5
+						blockquote.blockquote Event Name
+					input#event.form-control(type='text', aria-describedby='eventWarn', placeholder='Enter the name of the event you attended')
+				.form-group
+					h5
+						blockquote.blockquote Event Date
+					input#date.form-control(type='date', aria-describedby='dateWarn', placeholder='Enter the date of the event')
+				.form-group
+					h5
+						blockquote.blockquote Number of Hours
+					input#hours.form-control(type='number', aria-describedby='hoursWarn', placeholder='Enter the number of community service hours you earned at this event')
+				button.btn.btn-primary(type='submit') Submit

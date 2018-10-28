@@ -1,0 +1,63 @@
+html
+	head
+		title HRHS Philanthropy Club Homepage
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	body
+		link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js')
+		script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+		link(rel='shortcut icon', href='../favicon.ico')
+		link(rel='stylesheet', type='text/css', href='/Styles/component1.css')
+		link(rel='stylesheet', type='text/css', href='/Styles/demo.css')
+		link(rel='stylesheet', type='text/css', href='/Styles/normalize.css')
+		link(rel='stylesheet', href='/Styles/general.css')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+		link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+		script(src='/Scripts/modernizr-2.6.2.min.js')
+		script.
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-7243260-2']);
+			_gaq.push(['_trackPageview']);
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		.container
+			.row
+				.col-md-12
+					.headerwrap1
+						img(src='/Images/header.png', style='width: 100%;')
+			.row
+				hr.bg-primary(style='color: grey; height: 20px;')
+		.container
+			.component
+				// Start Nav Structure
+				button#cn-button.cn-button +
+				#cn-wrapper.cn-wrapper
+					ul
+						li
+							a(href='/merchandise')
+								span.fa.fa-shopping-cart
+						li
+							a(href='/userprofile')
+								span.glyphicon.glyphicon-user
+						li
+							a(href='/')
+								span.icon-home
+						li
+							a(href='/about')
+								span.fa.fa-info-circle
+						li
+							a(href='/suggestion')
+								span.icon-envelope-alt
+				#cn-overlay.cn-overlay
+				// End Nav Structure
+
+
+		script(src='/Scripts/polyfills.js')
+		script(src='/Scripts/demo1.js')
+		block content 
+			h1 layout
